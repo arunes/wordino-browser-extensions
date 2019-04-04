@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/wordino.css">
+</head>
+
+<body>
+    <div id="container">
+        <h3>wordino.net</h3>
+        <form id="form">
+            <small id="errorMessage"></small>
+            <input id="word" type="text" maxlength="50"> <button id="doSearch" type="submit">Lookup</button>
+        </form>
+        <p id="info">Select text on the webpage and click Wordino button to see word's synonms, anonyms, samples and
+            more.
+        </p>
+
+        <div id="loader">
+            <img src="images/loader.gif" />
+            <small>Looking up for the word...</small>
+        </div>
+        <div id="results">
+        </div>
+    </div>
+
+    <script src="js/vendor/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/chrome.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/popup.js"></script>
+</body>
+
+</html>
