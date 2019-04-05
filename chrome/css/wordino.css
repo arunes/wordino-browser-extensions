@@ -1,121 +1,135 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
 #container {
-    width: 400px;
-    padding: 5px;
+  padding: 10px;
+  padding-bottom: 0;
 }
-
-#container h3 {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 5px;
-}
-
-#container form small#errorMessage {
-    color: red;
-    display: block;
-}
-
 #container form input {
-    padding: 3px;
+  padding: 3px;
 }
-
-#container form button {
-    color: #444444;
-    background: #F3F3F3;
-    border: 1px #DADADA solid;
-    padding: 5px 10px;
-    border-radius: 2px;
-    font-weight: bold;
-    font-size: 9pt;
-    outline: none;
+#container form input.has-error {
+  border-color: red;
 }
-
-#container form button:hover {
-    border: 1px #C6C6C6 solid;
-    box-shadow: 1px 1px 1px #EAEAEA;
-    color: #333333;
-    background: #F7F7F7;
+#container #menu {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
 }
-
-#container form button:active {
-    box-shadow: inset 1px 1px 1px #DFDFDF;
+#container #content {
+  width: 400px;
 }
-
-#container #info {
-    color: #666;
-    margin: 0;
-    padding: 0;
-    margin-top: 5px;
+#container #content #infoTexts p {
+  color: #666666;
+  margin: 0;
+  padding: 0;
+  display: none;
 }
-
-#container #loader {
-    font-size: 1.2em;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    height: 350px;
-    padding: 10px;
-    display: none;
-    text-align: center;
+#container #content form {
+  margin-top: 10px;
 }
-
-#container #loader small {
-    display: block;
+#container #content #loader {
+  border: 1px solid #cccccc;
+  display: none;
+  font-size: 1.2em;
+  height: 350px;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
 }
-
-#container #results {
-    font-size: 1.2em;
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    height: 350px;
-    overflow: auto;
-    padding: 10px;
-    display: none;
+#container #content #loader small {
+  display: block;
 }
-
-#container #results div.result h2 {
-    margin: 0;
-    padding: 0;
+#container #content #results {
+  border: 1px solid #cccccc;
+  display: none;
+  font-size: 1.2em;
+  height: 350px;
+  margin-top: 10px;
+  overflow: auto;
+  padding: 10px;
 }
-
-#container #results div.result p.form {
-    margin: 0;
-    padding: 0;
-    color: #666;
-    font-style: italic;
+#container #content #results div.definitionResult h2 {
+  margin: 0;
+  padding: 0;
 }
-
-#container #results div.result ol.definitions {
-    margin: 0;
+#container #content #results div.definitionResult p {
+  margin: 0;
+  padding: 0;
 }
-
-#container #results div.result ol.definitions li.definitionContainer {
-    margin-bottom: 10px;
+#container #content #results div.definitionResult p.form {
+  color: #666666;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
 }
-
-#container #results div.result ol.definitions li.definitionContainer p.definition {
-    margin: 0;
-    padding: 0;
+#container #content #results div.definitionResult ol.definitions {
+  margin: 0;
 }
-
-#container #results div.result ol.definitions li.definitionContainer div.synonyms {
-    margin: 0;
-    padding: 0;
-    font-style: italic;
+#container #content #results div.definitionResult ol.definitions li.definitionContainer {
+  margin-bottom: 10px;
 }
-
-#container #results div.result ol.definitions li.definitionContainer div.synonyms span,
-#container #results div.result ol.definitions li.definitionContainer div.antonyms span,
-#container #results div.result ol.definitions li.definitionContainer div.alsoSee span {
-    color: #666;
+#container #content #results div.definitionResult ol.definitions li.definitionContainer div.references {
+  font-style: italic;
+  margin: 0;
+  padding: 0;
 }
-
-#container #results div.result ol.definitions li.definitionContainer div.synonyms a,
-#container #results div.result ol.definitions li.definitionContainer div.antonyms a,
-#container #results div.result ol.definitions li.definitionContainer div.alsoSee a {
-    text-decoration: none;
+#container #content #results div.definitionResult ol.definitions li.definitionContainer div.references span {
+  color: #666666;
 }
-
-#container #results div.result ol.definitions li.definitionContainer div.synonyms a:hover,
-#container #results div.result ol.definitions li.definitionContainer div.antonyms a:hover,
-#container #results div.result ol.definitions li.definitionContainer div.alsoSee a:hover {
-    text-decoration: underline;
+#container #content #results div.definitionResult ol.definitions li.definitionContainer div.references a {
+  text-decoration: none;
+}
+#container #content #results div.definitionResult ol.definitions li.definitionContainer div.references a:hover {
+  text-decoration: underline;
+}
+#container #content #results div.anagramResult {
+  margin-bottom: 15px;
+}
+#container #content #results div.anagramResult h5 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 3px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+#container #content #results div.anagramResult a {
+  text-decoration: none;
+}
+#container #content #results div.anagramResult a:hover {
+  text-decoration: underline;
+}
+#container #content #results div.buildWordResult {
+  margin-bottom: 15px;
+}
+#container #content #results div.buildWordResult h5 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 3px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+#container #content #results div.buildWordResult a {
+  text-decoration: none;
+}
+#container #content #results div.buildWordResult a:hover {
+  text-decoration: underline;
+}
+#container #content #results div.fillTheBlanksResult h5 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 3px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ccc;
+}
+#container #content #results div.fillTheBlanksResult a {
+  text-decoration: none;
+}
+#container #content #results div.fillTheBlanksResult a:hover {
+  text-decoration: underline;
+}
+footer {
+  text-align: right;
+  padding: 8px 10px 3px 0;
 }

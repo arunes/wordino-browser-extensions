@@ -1,0 +1,175 @@
+body,
+html {
+    margin : 0;
+    padding: 0;
+}
+
+#container {
+    padding: 10px;
+    padding-bottom: 0;
+
+    form {
+        input {
+            padding: 3px;
+
+            &.has-error {
+                border-color: red;
+            }
+        }
+    }
+
+    #menu {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #content {
+        width         : 400px;
+
+        #infoTexts {
+            p {
+                color  : #666666;
+                margin : 0;
+                padding: 0;
+                display: none;
+            }
+        }
+
+        form {
+            margin-top: 10px;
+        }
+
+        #loader {
+            border    : 1px solid #cccccc;
+            display   : none;
+            font-size : 1.2em;
+            height    : 350px;
+            margin-top: 10px;
+            padding   : 10px;
+            text-align: center;
+
+            small {
+                display: block;
+            }
+        }
+
+        #results {
+            border    : 1px solid #cccccc;
+            display   : none;
+            font-size : 1.2em;
+            height    : 350px;
+            margin-top: 10px;
+            overflow  : auto;
+            padding   : 10px;
+
+            div.definitionResult {
+                h2 {
+                    margin : 0;
+                    padding: 0;
+                }
+
+                p {
+                    margin : 0;
+                    padding: 0;
+
+                    &.form {
+                        color     : #666666;
+                        font-style: italic;
+                        margin    : 0;
+                        padding   : 0;
+                    }
+                }
+
+                ol.definitions {
+                    margin: 0;
+
+                    li.definitionContainer {
+                        margin-bottom: 10px;
+
+                        div.references {
+                            font-style: italic;
+                            margin    : 0;
+                            padding   : 0;
+
+                            span {
+                                color: #666666;
+                            }
+
+                            a {
+                                text-decoration: none;
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            div.anagramResult {
+                margin-bottom: 15px;
+
+                h5 {
+                    margin        : 0;
+                    padding       : 0;
+                    margin-bottom : 3px;
+                    padding-bottom: 4px;
+                    border-bottom : 1px solid #ccc;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            div.buildWordResult {
+                margin-bottom: 15px;
+
+                h5 {
+                    margin        : 0;
+                    padding       : 0;
+                    margin-bottom : 3px;
+                    padding-bottom: 4px;
+                    border-bottom : 1px solid #ccc;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            div.fillTheBlanksResult {
+                h5 {
+                    margin        : 0;
+                    padding       : 0;
+                    margin-bottom : 3px;
+                    padding-bottom: 4px;
+                    border-bottom : 1px solid #ccc;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+footer {
+    text-align: right;
+    padding: 8px 10px 3px 0;
+}

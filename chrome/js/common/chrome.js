@@ -1,5 +1,4 @@
 class ChromeHelper {
-
     runScript = async (script) => {
         return new Promise((resolve, reject) => {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -20,8 +19,6 @@ class ChromeHelper {
                     resolve(result);
                 });
             });
-
         })
     }
 }
-

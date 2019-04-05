@@ -3,30 +3,50 @@
 
 <head>
     <link rel="stylesheet" href="css/wordino.css">
+    <link rel="stylesheet" href="css/button.css">
 </head>
 
 <body>
     <div id="container">
-        <h3>wordino.net</h3>
-        <form id="form">
-            <small id="errorMessage"></small>
-            <input id="word" type="text" maxlength="50"> <button id="doSearch" type="submit">Lookup</button>
-        </form>
-        <p id="info">Select text on the webpage and click Wordino button to see word's synonms, anonyms, samples and
-            more.
-        </p>
-
-        <div id="loader">
-            <img src="images/loader.gif" />
-            <small>Looking up for the word...</small>
+        <div id="menu">
+            <button class="blue" data-tab="definition">Definitions</button><button
+                data-tab="anagrams">Anagrams</button><button data-tab="buildWords">Build a word</button><button
+                data-tab="fillTheBlanks">Fill the Blanks</button>
         </div>
-        <div id="results">
+
+        <div id="content">
+            <div id="infoTexts">
+                <p class="definition">Get word's definitions, samples and more. Enter the word here or select the word
+                    on any webpage and click the Wordino button.</p>
+                <p class="anagrams">Get anagrams of the entered word. <i>"Anagram: a word or phrase spelled by rearranging the letters of another word or phrase."</i></p>
+                <p class="buildWords">Enter letters or words and find out possible words could be created with the entered value.
+                </p>
+                <p class="fillTheBlanks">Enter a incomplete word with the wildcard asterix (*) to find possible
+                    words. Ex: enter <strong>p*one</strong> and get the results <strong>phone</strong> and
+                    <strong>prone</strong> </p>
+            </div>
+            <form>
+                <input id="query" type="text" maxlength="50"> <button type="submit">Lookup</button>
+            </form>
+
+            <div id="loader">
+                <img src="images/loader.gif" />
+                <small>Looking up for the word...</small>
+            </div>
+
+            <div id="results"></div>
         </div>
     </div>
 
+    <footer>
+        <a href="http://wordino.net" target="_blank"><img src="images/logo.png" alt="wordino" /></a>
+    </footer>
+
     <script src="js/vendor/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/chrome.js"></script>
-    <script src="js/api.js"></script>
+    <script src="js/common/chrome.js"></script>
+    <script src="js/wordino/api.js"></script>
+    <script src="js/wordino/uiHelper.js"></script>
+
     <script src="js/popup.js"></script>
 </body>
 

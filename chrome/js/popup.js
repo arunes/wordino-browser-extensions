@@ -1,112 +1,7 @@
-let parseResult = function (data) {
-    let results = $("#results");
-
-    // clear results
-    results.empty();
-
-    if (data === null) {
-        let query = $("#word").val();
-        $("<span/>").text("No results for " + query).appendTo(results);
-
-        results.show();
-        $("#loader").hide();
-        return;
-    }
-
-    // loop through forms
-    $.each(data.forms, (idxForm, form) => {
-        let result = $("<div/>").addClass("result").appendTo(results);
-
-        // add header
-        $("<h2/>").text(data.word.word).appendTo(result);
-
-        // add form
-        $("<p/>").addClass("form").text(form.form).appendTo(result);
-
-        // create definitions container
-        let definitions = $("<ol/>").addClass("definitions").appendTo(result);
-
-        // loop through definitions
-        $.each(form.definitions, (idxDefinition, definition) => {
-            // add definition
-            let definitionItem = $("<li/>").addClass("definitionContainer").appendTo(definitions);
-            $("<p/>").addClass("definition").text(definition.definition).appendTo(definitionItem);
-
-            // synonyms
-            if (definition.synonyms) {
-                let synonymContainer = $("<div/>").addClass("synonyms").appendTo(definitionItem);
-                $("<span/>").text("synonyms: ").appendTo(synonymContainer);
-                $.each(definition.synonyms, (idxSynonym, synonym) => {
-                    $("<a/>").attr("href", "#").click(() => {
-                        searchWord(synonym);
-                    }).text(synonym).appendTo(synonymContainer);
-                    if (idxSynonym < definition.synonyms.length - 1) {
-                        $("<span/>").text(", ").appendTo(synonymContainer);
-                    }
-                });
-            }
-
-            // antonyms
-            if (definition.antonyms) {
-                let antonymContainer = $("<div/>").addClass("antonyms").appendTo(definitionItem);
-                $("<span/>").text("antonyms: ").appendTo(antonymContainer);
-                $.each(definition.antonyms, (idxAntonym, antonym) => {
-                    $("<a/>").attr("href", "#").click(() => {
-                        searchWord(antonym);
-                    }).text(antonym).appendTo(antonymContainer);
-                    if (idxAntonym < definition.antonyms.length - 1) {
-                        $("<span/>").text(", ").appendTo(antonymContainer);
-                    }
-                });
-            }
-
-            // also see
-            if (definition.alsoSee) {
-                let alsoSeeContainer = $("<div/>").addClass("alsoSee").appendTo(definitionItem);
-                $("<span/>").text("also See: ").appendTo(alsoSeeContainer);
-                $.each(definition.alsoSee, (idxAlsoSee, alsoSee) => {
-                    $("<a/>").attr("href", "#").click(() => {
-                        searchWord(alsoSee);
-                    }).text(alsoSee).appendTo(alsoSeeContainer);
-                    if (idxAlsoSee < definition.alsoSee.length - 1) {
-                        $("<span/>").text(", ").appendTo(alsoSeeContainer);
-                    }
-                });
-            }
-
-            // samples
-            if (definition.samples) {
-                let samples = $("<ul/>").addClass("samples").appendTo(definitionItem);
-                $.each(definition.samples, (idxSample, sample) => {
-                    $("<li/>").text(sample).appendTo(samples);
-                })
-            }
-        });
-
-    });
-
-    results.show();
-    $("#loader").hide();
-}
-
-let searchWord = function (word) {
-    // show loading indicator
-    $("#results").hide();
-    $("#info").hide();
-    $("#loader").show();
-    $("#word").val(word);
-
-    let api = new WordinoAPI();
-    api.searchWord(word).then(function (data) {
-        // re-enable search button
-        $("#doSearch").removeAttr("disabled");
-        parseResult(data);
-    });
-}
-
-let submitForm = function (event) {
+let activeTab;
+let submitForm = async function (event) {
     event.preventDefault();
-    let queryWord = $("#word").val();
+    let queryWord = $("#query").val();
     if (!queryWord) {
         queryWord = "";
     } else {
@@ -114,20 +9,56 @@ let submitForm = function (event) {
     }
 
     if (queryWord.length == 0) {
-        $("#errorMessage").text("Please enter word to lookup.").show();
-        $("#word").focus();
+        $("#query").addClass('has-error').focus();
+        window.setTimeout(() => {
+            $("#query").removeClass('has-error');
+        }, 1500);
         return;
     } else if (queryWord.length > 50) {
-        $("#errorMessage").text("Word cannot be longer than 50 characters.").show();
-        $("#word").focus();
+        $("#query").focus();
         return;
     }
 
-    // clear error message if any
-    $("#errorMessage").text("").hide();
-    $("#doSearch").attr("disabled", "disabled");
+    // start loading
+    $("#loader").show();
+    $("#results").hide().empty();
+    $("form button").attr("disabled", "disabled");
 
-    searchWord(queryWord);
+    let html = "";
+    let uiHelper = new UIHelper();
+    switch (activeTab) {
+        case "definition":
+            html = await uiHelper.getWord(queryWord);
+            break;
+
+        case "anagrams":
+            html = await uiHelper.getAnagrams(queryWord);
+            break;
+
+        case "buildWords":
+            html = await uiHelper.buildWords(queryWord);
+            break;
+
+        case "fillTheBlanks":
+            html = await uiHelper.fillTheBlanks(queryWord);
+            break;
+    }
+
+    $("form button").removeAttr("disabled");
+    $("#loader").hide();
+    $("#results").html(html)
+    $("#results a[data-word]").click(function () {
+        let word = $(this).data("word");
+        let target = $(this).data("target");
+        if (target) {
+            switchTab(target);
+        }
+
+        $("#query").val(word);
+        $("form").submit();
+    });
+    $("#results").show();
+    $("#results").scrollTop(0);
 };
 
 // try to get selected text from the active tab
@@ -139,7 +70,8 @@ let readSelection = async () => {
         if (result) {
             result = result.toString().trim().toLowerCase()
             if (result.length > 0) {
-                searchWord(result);
+                $("#query").val(result);
+                $("form").submit();
             }
         }
     } catch (err) {
@@ -147,9 +79,30 @@ let readSelection = async () => {
     }
 }
 
+let switchTab = function (tab) {
+    activeTab = tab;
+    $("#menu button").removeClass("blue");
+
+    let btn = $("#menu button[data-tab='" + tab + "']");
+    btn.addClass("blue");
+    $("#infoTexts p").hide();
+    $("#infoTexts ." + tab).show();
+    $("#results").hide().empty();
+    $("#query").focus();
+};
+
+let prepareMenu = function () {
+    $("#menu button").click(function () {
+        let tab = $(this).data("tab");
+        switchTab(tab);
+    });
+};
+
 // on load
 $(function () {
-    $("#word").focus();
-    $("#form").submit(submitForm);
+    $("#query").focus();
+    $("form").submit(submitForm);
+    prepareMenu();
+    switchTab("definition");
     readSelection();
 });
