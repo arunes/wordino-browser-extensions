@@ -1,12 +1,11 @@
 let gulp = require("gulp"),
     clean = require("gulp-clean")
-sass = require("gulp-sass")
-cleanCSS = require('gulp-clean-css')
-concat = require("gulp-concat")
-babel = require("gulp-babel")
-uglify = require("gulp-uglify")
-rename = require("gulp-rename")
-htmlreplace = require("gulp-html-replace");
+    sass = require("gulp-sass")
+    cleanCSS = require('gulp-clean-css')
+    concat = require("gulp-concat")
+    babel = require("gulp-babel")
+    uglify = require("gulp-uglify")
+    htmlreplace = require("gulp-html-replace");
 
 // config
 const paths = {
