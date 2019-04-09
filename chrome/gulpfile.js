@@ -1,10 +1,11 @@
 let gulp = require("gulp"),
-    clean = require("gulp-clean")
-    sass = require("gulp-sass")
-    cleanCSS = require('gulp-clean-css')
-    concat = require("gulp-concat")
-    babel = require("gulp-babel")
-    uglify = require("gulp-uglify")
+    watch = require("gulp-watch"),
+    clean = require("gulp-clean"),
+    sass = require("gulp-sass"),
+    cleanCSS = require('gulp-clean-css'),
+    concat = require("gulp-concat"),
+    babel = require("gulp-babel"),
+    uglify = require("gulp-uglify"),
     htmlreplace = require("gulp-html-replace");
 
 // config
@@ -103,3 +104,6 @@ gulp.task("html:compile", function () {
 
 gulp.task("build", gulp.series("clean", "sass", "css:build", "js:build", "static:build"));
 gulp.task("compile", gulp.series("build", "css:compile", "js:compile", "static:compile", "html:compile"));
+gulp.task("watch", function () {
+    gulp.watch(paths.src + "/**/*", gulp.series("build"));
+});
