@@ -1,5 +1,5 @@
 class WordinoAPI {
-    _apiUrl = "http://localhost:5000";
+    _apiUrl = "http://api.wordino.net";
     constructor() {
 
     }

@@ -1,0 +1,37 @@
+{
+  "name": "wordino-chrome-extension",
+  "version": "1.0.0",
+  "description": "Wordino Chrome Extension",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"Error: no test specified\" && exit 1",
+    "compile": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arunes/wordino-browser-extensions.git"
+  },
+  "author": "Ali R Unes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arunes/wordino-browser-extensions/issues"
+  },
+  "homepage": "https://github.com/arunes/wordino-browser-extensions#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3"
+  }
+}

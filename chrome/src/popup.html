@@ -2,8 +2,10 @@
 <html>
 
 <head>
+    <!-- build:css -->
     <link rel="stylesheet" href="css/wordino.css">
     <link rel="stylesheet" href="css/button.css">
+    <!-- endbuild -->
 </head>
 
 <body>
@@ -16,12 +18,14 @@
 
         <div id="content">
             <div id="infoTexts">
-                <p class="definition">Get word's definitions, samples and more. Enter the word here or select the word
-                    on any webpage and click the Wordino button.</p>
-                <p class="anagrams">Get anagrams of the entered word. <i>"Anagram: a word or phrase spelled by rearranging the letters of another word or phrase."</i></p>
-                <p class="buildWords">Enter letters or words and find out possible words could be created with the entered value.
+                <p class="definition">A classic dictionary. Type the word or select the word on any webpage and click
+                    the Wordino button to see it's definition.</p>
+                <p class="anagrams">Get anagrams of the typed word. <i>"Anagram: a word or phrase spelled by rearranging
+                        the letters of another word or phrase."</i></p>
+                <p class="buildWords">Enter letters or words and find out possible words which could be created with the
+                    typed letters.
                 </p>
-                <p class="fillTheBlanks">Enter a incomplete word with the wildcard asterix (*) to find possible
+                <p class="fillTheBlanks">Enter an incomplete word with the wildcard asterix (*) to find possible
                     words. Ex: enter <strong>p*one</strong> and get the results <strong>phone</strong> and
                     <strong>prone</strong> </p>
             </div>
@@ -31,7 +35,7 @@
 
             <div id="loader">
                 <img src="images/loader.gif" />
-                <small>Looking up for the word...</small>
+                <small>Searching wordino...</small>
             </div>
 
             <div id="results"></div>
@@ -42,12 +46,14 @@
         <a href="http://wordino.net" target="_blank"><img src="images/logo.png" alt="wordino" /></a>
     </footer>
 
+    <!-- build:js -->
     <script src="js/vendor/jquery-3.3.1.slim.min.js"></script>
     <script src="js/common/chrome.js"></script>
     <script src="js/wordino/api.js"></script>
     <script src="js/wordino/uiHelper.js"></script>
-
     <script src="js/popup.js"></script>
+    <!-- endbuild -->
+
 </body>
 
 </html>
