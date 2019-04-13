@@ -1,7 +1,8 @@
 {
-    "name": "Wordino",
+    "name": "Wordino - Dictionary Tools",
+    "short_name": "Wordino",
     "version": "1.0",
-    "description": "Lookup words, find samples by using Wordino API",
+    "description": "Solve word puzzles, scrabble, wheels of fortune, etc. with Wordino - Dictionary Tools",
     "permissions": [
         "activeTab",
         "contextMenus"
