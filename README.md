@@ -3,7 +3,7 @@ Chrome Extension for Wordino
 
 [Website](http://wordino.net/) | [Chrome Extension](https://chrome.google.com/webstore/detail/wordino-dictionary-tools/jkkphmhalnbhflocfigaadhdkbacijej)
 
-![Logo](/arunes/wordino-browser-extensions/blob/master/chrome/src/images/wordino48.png?raw=true)
+![Logo](https://github.com/arunes/wordino-browser-extensions/blob/master/chrome/src/images/wordino48.png?raw=true)
 
 Solve word puzzles, scrabble, wheels of fortune, etc. with Wordino - Dictionary Tools
 
